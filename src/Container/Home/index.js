@@ -11,6 +11,7 @@ const  HomeContainer = ({category, heading})=>{
     const [content, setContent] = useState([]);
     const [pageno, setPageno] = useState(1)
     const [paginationno, setPaginationno] = useState(0);
+    const [totalResults, setTotalResults] = useState();
 
     const {search_movie} = useContext(AppContext);
 
@@ -23,6 +24,7 @@ const  HomeContainer = ({category, heading})=>{
             url = `https://api.themoviedb.org/3/movie/${category}?api_key=c45a857c193f6302f2b5061c3b85e743&language=en-US&page=${pageno}`;
         }
         const {data} = await axios.get(url)   // task
+        setTotalResults(data.total_results);
         setContent(data.results);
         setPaginationno(data.total_pages);
     }
@@ -47,11 +49,11 @@ const  HomeContainer = ({category, heading})=>{
                         </section>
                     </Col>
                 <Row>
-                    {
+                    {totalResults!==0? (
                         content && content.length > 0 ? content.map((item, index)=>{
                             return (<CardMoviesComponents key={index} data={item} />)
-                        }) : <p>No result found...</p>   
-                    }
+                        }) : <p>Loading...</p>   
+                    ): <p>No results for {search_movie}...</p>}
 
                 {
                     paginationno && paginationno > 1 ? <PaginationComponent maxnum={paginationno} activenum={pageno} handleClick={handleClick}/> : ''
