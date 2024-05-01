@@ -7,7 +7,7 @@ import { AppContext } from "../../context";
 
 const HeaderComponent = () => {
   const { search_movie, setSearch_movie } = useContext(AppContext);
-  const [searchTerm, setSearchTerm] = useState("");
+//   const [searchTerm, setSearchTerm] = useState("");
 
   const navData = [
     { name: "Popular", link: "/" },
@@ -31,11 +31,11 @@ const HeaderComponent = () => {
       <Navbar bg="dark" expand="lg">
         <Container>
           <Link to="/" style={{cursor:"pointer",textDecoration:"none"}}><Navbar.Brand>MovieDb</Navbar.Brand></Link>
-          <Navbar.Toggle aria-controls="navbarScroll" />
+          <Navbar.Toggle aria-controls="navbarScroll" style={{border:"1px solid white" }} />
           <Navbar.Collapse id="navbarScroll">
             <Nav
               className="me-auto my-2 my-lg-0"
-              style={{ maxHeight: "100px" }}
+              style={{ maxHeight: "100px"}}
               navbarScroll
             >
               {navData.map((item) => {

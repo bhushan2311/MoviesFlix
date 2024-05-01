@@ -116,10 +116,10 @@ const DetailsContainer = () => {
                   <span className="linkTag">{origin_country}</span>{" "}
                 </li>
               </ul>
-              <span style={{ fontSize: "x-large", fontWeight: "600" }}>
+              <span style={{ fontSize: "x-large", fontWeight: "600",color:"white" }}>
                 Overview:
               </span>
-              <div className="description_readmore_wrapper ">{overview}</div>
+              <div className="description_readmore_wrapper " style={{color:"white"}}>{overview}</div>
             </div>
           </div>
         </Col>
