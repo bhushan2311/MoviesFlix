@@ -10,7 +10,7 @@ import { AppContext } from '../../context';
 const  HomeContainer = ({category, heading})=>{
     const [content, setContent] = useState([]);
     const [pageno, setPageno] = useState(1)
-    const [paginationno, setPaginationno] = useState(0);
+    const [paginationno, setPaginationno] = useState(500);
     const [totalResults, setTotalResults] = useState();
 
     const {search_movie} = useContext(AppContext);
@@ -26,7 +26,7 @@ const  HomeContainer = ({category, heading})=>{
         const {data} = await axios.get(url)   // task
         setTotalResults(data.total_results);
         setContent(data.results);
-        setPaginationno(data.total_pages);
+        // setPaginationno(data.total_pages);       // cant set more than 500 pages: issue in api as total pages is only limit upto 500 even if it shows more than 500
     }
 
     useEffect(()=>{
