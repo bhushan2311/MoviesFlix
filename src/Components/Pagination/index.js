@@ -16,8 +16,8 @@ const PaginationComponent = (props)=>{
         <>
             <div className="paginationWap">
                 <ReactPaginate
-                    previousLabel={"<"}
-                    nextLabel={">"}
+                    previousLabel={parseInt(activenum) > 1? "<":null}
+                    nextLabel={parseInt(activenum)<500? ">":null}
                     breakLabel={"..."}
                     pageCount={maxnum}
                     marginPagesDisplayed={2}
